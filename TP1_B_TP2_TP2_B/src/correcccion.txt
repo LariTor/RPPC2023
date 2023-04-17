@@ -1,0 +1,9 @@
+- Había muchas cosas para corregir para que ande; incluso alguna función
+con nombres cambiados; se usaba como RowScale pero estaba definida como ScaleRow.
+- Muchas operaciones sin definir, headers que no estaban incluidos (puede ser que
+esto sea porque VSCode resuelva inclusiones que son necesarias)
+- El archivo optest.c toma parámetros, pide 9 pero el formato declarado por el
+error es con dos archivos; peor aun, ni los usa.
+- Fallan algunos tests
+
+Nota: 6
