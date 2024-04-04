@@ -1,5 +1,5 @@
 CC = g++
-LDFLAGS = -lm -lcriterion
+LDFLAGS = -lm -lcriterion -lginac -lmatplot
 CFLAGS = -O
 ifeq ($(DEBUG),1)
 	CFLAGS += -g3
