@@ -104,16 +104,20 @@ class Spline{
 
     private:
 
-        std::vector<point> pf_points; //predefined points vector
-        std::vector<Polinomials> q_pols; //polinomias cubic = splines vector
+        typedef struct {
+            Polinomials pol;
+            float init;
+        } SplinePolinomial;
 
-        Polinomials t();
+        std::vector<SplinePolinomial> q_pols; //polinomias cubic = splines vector
 
-        float a();
+        Polinomials t(point pf_points[2]);
 
-        float b();
+        float a(point pf_points[2]);
 
-        Polinomials q_generator(Polinomials t, float a, float b);
+        float b(point pf_points[2]);
+
+        Polinomials q_generator(point pf_points[2]);
 
 };
 

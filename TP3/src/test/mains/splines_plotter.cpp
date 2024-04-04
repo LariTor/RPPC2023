@@ -16,7 +16,7 @@ namespace plt = matplot;
 int main (int argc, char *argv[]) {
 	GiNaC::symbol x;
 	GiNaC::ex e = sin(x);
-	Spline spline(e, x, -1, 1, 20);
+	Spline spline(e, x, -10, 10, 20);
 	std::vector<float> puntos;
 	puntos.reserve(198);
     std::vector<float> puntos_spline;
@@ -27,10 +27,7 @@ int main (int argc, char *argv[]) {
         GiNaC::ex exp_eval = e.subs(x_eval);
         float y = GiNaC::ex_to<GiNaC::numeric>(exp_eval).to_double();
         puntos.push_back(y);
-		puntos_spline.push_back(0.0);
-	}
-	for (float i = -0.9; i<0.9; i+=0.1) {
-		puntos_spline[(i+9.9)*10] = spline(i);
+		puntos_spline.push_back(spline(i));
 	}
 	plt::plot(puntos);
     plt::hold(plt::on);
