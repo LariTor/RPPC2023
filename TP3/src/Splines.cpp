@@ -58,8 +58,11 @@ Spline::~Spline(){}
  *  -n_pi = number of points in interal
  * 
  */
-Spline::Spline(GiNaC::ex exp, GiNaC::symbol sym, float xi, float xf, int n_pi){
-
+Spline::Spline(GiNaC::ex exp, GiNaC::symbol sym, float xi, float xf, int n_pi):end(xf){
+	if (n_pi < 2){
+		n_pi == 2;
+	}
+	
 	//for y: evaluate exp in symbol
 	GiNaC::exmap x_eval;
 	x_eval[sym] = xi;
@@ -78,7 +81,7 @@ Spline::Spline(GiNaC::ex exp, GiNaC::symbol sym, float xi, float xf, int n_pi){
 	q_pols.resize(n_pi-1);
 
 	// genero el equiespaciado
-	float xd = (xf-xi)/n_pi;
+	float xd = (xf-xi)/(n_pi-1);
 
 	for (int i = 0; i < q_pols.size(); i++){
 
@@ -98,9 +101,12 @@ Spline::Spline(GiNaC::ex exp, GiNaC::symbol sym, float xi, float xf, int n_pi){
 
 }
 
-const char *Spline::out_of_range::what() const noexcept(true) { return msg; }
+const char *Spline::spline_undifined::what() const noexcept(true) { return msg; }
 
 float Spline::operator()(float xe) const noexcept(false){
+	if (xe > end || xe < q_pols[0].init){
+		throw spline_undifined();
+	}
 	
 	for (int i = 0; i < q_pols.size()-1; i++){
 		if (xe > q_pols[i].init && xe < q_pols[i+1].init){

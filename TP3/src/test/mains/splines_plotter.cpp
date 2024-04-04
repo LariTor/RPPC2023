@@ -15,16 +15,16 @@ namespace plt = matplot;
 
 int main (int argc, char *argv[]) {
 	GiNaC::symbol x;
-	GiNaC::ex e = sin(x);
-	Spline spline(e, x, -10, 10, 20);
+	GiNaC::ex exp = -pow(x,4)+2*pow(x,2)+sin(10*x);
+	Spline spline(exp, x, -2, 2, 20);
 	std::vector<float> puntos;
-	puntos.reserve(198);
+	puntos.reserve(380);
     std::vector<float> puntos_spline;
     GiNaC::exmap x_eval;
-	puntos_spline.reserve(198);
-    for (float i = -9.9; i<9.9; i+=0.1) {
+	puntos_spline.reserve(380);
+    for (float i = -1.9; i<1.9; i+=0.01) {
         x_eval[x] = i;
-        GiNaC::ex exp_eval = e.subs(x_eval);
+        GiNaC::ex exp_eval = exp.subs(x_eval);
         float y = GiNaC::ex_to<GiNaC::numeric>(exp_eval).to_double();
         puntos.push_back(y);
 		puntos_spline.push_back(spline(i));

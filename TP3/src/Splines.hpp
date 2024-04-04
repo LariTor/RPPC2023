@@ -71,7 +71,7 @@ class Spline{
          *        
          * 
          */
-        class out_of_range: public std::exception {
+        class spline_undifined: public std::exception {
             public:
             /**
              * @brief Construct a new out of range object default
@@ -79,12 +79,12 @@ class Spline{
              *          Destroy a out of range object
              * 
              */
-            out_of_range()=default;
+            spline_undifined()=default;
 
-            out_of_range(out_of_range &&) = default;
-            out_of_range(const out_of_range &) = default;
+            spline_undifined(spline_undifined &&) = default;
+            spline_undifined(const spline_undifined &) = default;
 
-            ~out_of_range()=default;
+            ~spline_undifined()=default;
             /**
              * @brief member function named what() that provides a way to retrieve the error message associated with an out_of_range exception
              * @return const char*, 
@@ -93,10 +93,10 @@ class Spline{
 
             /**
              * @brief para que no se pueda modificar el mensaje, lo ponemos en private
-             * msg= Entrada no válida: La evaluación de la spline no se puede realizar fuera de su rango definido.
+             * msg= Entrada no válida: La spline no esta definida para la entrada dada.
              */
             private:
-            const char * msg = "Invalid input: Spline evaluation cannot be performed outside its defined range.";
+            const char * msg = "Invalid input: Spline is no defined for the given input.";
         };
         
         float operator()(float) const noexcept(false);
@@ -108,6 +108,8 @@ class Spline{
             Polinomials pol;
             float init;
         } SplinePolinomial;
+        
+        float end;
 
         std::vector<SplinePolinomial> q_pols; //polinomias cubic = splines vector
 
