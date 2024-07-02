@@ -60,7 +60,7 @@ Spline::~Spline(){}
  */
 Spline::Spline(GiNaC::ex exp, GiNaC::symbol sym, float xi, float xf, int n_pi):end(xf){
 	if (n_pi < 2){
-		n_pi == 2;
+		n_pi = 2;
 	}
 	
 	//for y: evaluate exp in symbol

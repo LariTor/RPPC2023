@@ -1,6 +1,6 @@
-CC = g++
+CC = clang++
 LDFLAGS = -lm -lcriterion -lginac -lmatplot
-CFLAGS = -O
+CFLAGS = -O -std=c++17
 ifeq ($(DEBUG),1)
 	CFLAGS += -g3
 endif
