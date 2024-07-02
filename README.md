@@ -30,10 +30,13 @@
 Realizar los trabajos prácticos a medida de avance de materia.
 </details>
 
+> [!IMPORTANT]
+> Se modificó el makefile para que compile con clang
+
 > [!CAUTION]
 >  - Este proyecto está realizado con GiNaC, una librería de C++ (no estándar). [Ver más sobre GiNaC](https://www.ginac.de/)
 >  - Este proyecto está realizado con Matplotplusplus, . [Ver más sobre Matplotplusplus](https://github.com/alandefreitas/matplotplusplus)
 
 > [!WARNING]
-> Correr los test depende de Criterion. [Ver más sobre criterion](https://criterion.readthedocs.io/en/master/intro.html)
-> Error de GNUPLOT: warning: Reading from '-' inside a multiplot not supported; use a datablock instead. El responsable de solucionar este error es matplotplusplus [Ver más sobre el error](http://www.gnuplot.info/ReleaseNotes_6_0_1.html)
+> - Correr los test depende de Criterion. [Ver más sobre criterion](https://criterion.readthedocs.io/en/master/intro.html)
+> - Error de GNUPLOT: warning: Reading from '-' inside a multiplot not supported; use a datablock instead. El responsable de solucionar este error es matplotplusplus [Ver más sobre el error](http://www.gnuplot.info/ReleaseNotes_6_0_1.html)
